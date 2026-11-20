@@ -1,0 +1,21 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Logs & local env
+*.log
+.env
+.env.*
+
+# Apps Script local tooling (clasp)
+.clasp.json
+.claspignore
+node_modules/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
