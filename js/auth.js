@@ -84,10 +84,40 @@
           body: '<p class="confirm-text">Before signing in, connect this app to your deployed Google Apps Script web app.</p>' +
             '<div class="form-group"><label class="form-label">Google Apps Script URL</label>' +
             '<input class="form-control" id="setup-api-url" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off">' +
-            '<small class="form-hint">Deploy the backend in <code>google-apps-script/</code> as a web app, then paste the URL here. See README.md.</small></div>',
+            '<small class="form-hint">Use the <strong>web app</strong> URL ending in <code>/exec</code>, not a <code>/dev</code> test URL. Deploy with <strong>Execute as: Me</strong> and <strong>Who has access: Anyone</strong>.</small></div>' +
+            '<div id="setup-api-result" class="mt-2"></div>',
           confirmText: 'Save & continue', showCancel: false,
-          onConfirm: () => {
-            const url = Utils.$('#setup-api-url').value;
+          footer: '<button type="button" class="btn btn-ghost" id="setup-api-test"><i data-lucide="activity"></i> Test connection</button>',
+          onOpen: (modal) => {
+            Utils.$('#setup-api-test', modal.el).addEventListener('click', async (e) => {
+              const button = e.currentTarget;
+              const result = Utils.$('#setup-api-result', modal.el);
+              const url = Utils.$('#setup-api-url', modal.el).value;
+              const previous = API.getUrl();
+              let applied = false;
+              button.disabled = true;
+              button.innerHTML = '<span class="btn-spinner"></span> Testing…';
+              result.innerHTML = '';
+              try {
+                API.setUrl(url);
+                applied = true;
+                const r = await API.request('system.health', {}, { silent: true });
+                result.innerHTML = '<div class="alert alert-info"><i data-lucide="circle-check"></i><div><strong>Connected.</strong> ' +
+                  Utils.esc(r.service || 'Ocson backend') + ' v' + Utils.esc(r.version || '1.0') + ' · ' + (r.sheetCount || 18) + ' sheets ready. Click <strong>Save &amp; continue</strong>.</div></div>';
+                Utils.repaintIcons(result);
+              } catch (err) {
+                if (applied) API.setUrl(previous);
+                result.innerHTML = '<div class="alert alert-danger"><i data-lucide="circle-alert"></i><div>' + Utils.esc(err.message) + '</div></div>';
+                Utils.repaintIcons(result);
+              } finally {
+                button.disabled = false;
+                button.innerHTML = '<i data-lucide="activity"></i> Test connection';
+                Utils.repaintIcons(modal.el);
+              }
+            });
+          },
+          onConfirm: (el) => {
+            const url = Utils.$('#setup-api-url', el).value;
             try { API.setUrl(url); Utils.toast('Backend connected', 'success'); location.reload(); }
             catch (e) { Utils.toast(e.message, 'error'); return false; }
           }
