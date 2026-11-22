@@ -90,7 +90,7 @@
         if (err instanceof ApiError) { if (!o.silent) Utils.toast(err.message, 'error', 6000); throw err; }
         const friendly = err.name === 'AbortError'
           ? 'The request timed out. Check your internet connection and try again.'
-          : 'Cannot reach the backend. Verify the API URL and your internet connection.';
+          : 'Cannot reach the backend. Confirm the URL ends in /exec, the deployment is set to "Anyone", and your internet connection is working.';
         const apiErr = new ApiError(friendly, 'NETWORK_ERROR');
         if (!o.silent) Utils.toast(friendly, 'error', 6000);
         throw apiErr;
