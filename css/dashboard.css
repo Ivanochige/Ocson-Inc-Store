@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Ocson Inc. Store — Dashboard specific layout
+   ========================================================================== */
+.dashboard-filters {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 10px 14px; box-shadow: var(--shadow-xs);
+}
+.dashboard-filters .period-tabs { display: flex; gap: 3px; background: var(--surface-3); padding: 3px; border-radius: 9px; }
+.period-tab { padding: 6px 12px; border: 0; background: transparent; color: var(--text-2); border-radius: 7px;
+  font-size: 11.5px; font-weight: 600; transition: var(--transition); }
+.period-tab:hover { color: var(--text); }
+.period-tab.active { background: var(--surface); color: var(--primary); box-shadow: var(--shadow-xs); }
+.dashboard-filters .date-range { margin-left: auto; }
+.dashboard-filters .date-range input { height: 34px; font-size: 12px; }
+
+.kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
+.kpi-grid.secondary { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 20px; }
+.chart-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+.chart-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.chart-grid .card { min-width: 0; }
+.chart-wide { grid-column: span 2; }
+.highlight-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px;
+}
+.highlight-item { border-radius: var(--radius); padding: 14px 16px; color: #fff; position: relative; overflow: hidden; }
+.highlight-item::after { content: ''; position: absolute; right: -20px; top: -20px; width: 90px; height: 90px;
+  border-radius: 50%; background: rgba(255,255,255,.08); }
+.highlight-item.green { background: linear-gradient(120deg, #15803d, #22c55e); }
+.highlight-item.navy { background: linear-gradient(120deg, #0b1526, #1e3355); }
+.highlight-item.amber { background: linear-gradient(120deg, #b45309, #f59e0b); }
+.highlight-item .label { font-size: 11px; opacity: .85; font-weight: 600; }
+.highlight-item .value { font-size: 22px; font-weight: 800; margin-top: 4px; letter-spacing: -.6px; }
+.highlight-item .foot { font-size: 10.5px; opacity: .8; margin-top: 2px; }
+.activity-list { display: flex; flex-direction: column; }
+.activity-row { display: flex; align-items: center; gap: 11px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.activity-row:last-child { border-bottom: 0; }
+.activity-icon { width: 34px; height: 34px; border-radius: 10px; background: var(--surface-3); display: grid; place-items: center; color: var(--text-2); flex-shrink: 0; }
+.activity-icon svg { width: 16px; height: 16px; }
+.activity-main { flex: 1; min-width: 0; }
+.activity-main strong { font-size: 12.5px; display: block; }
+.activity-main small { font-size: 11px; color: var(--muted); }
+.activity-value { font-size: 12.5px; font-weight: 700; }
+.donut-wrap { position: relative; height: 210px; }
+.donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+.donut-center strong { font-size: 20px; letter-spacing: -.5px; }
+.donut-center span { font-size: 10.5px; color: var(--muted); }
+.rank-list { display: flex; flex-direction: column; gap: 12px; }
+.rank-row { display: flex; align-items: center; gap: 10px; }
+.rank-num { width: 22px; height: 22px; border-radius: 7px; background: var(--surface-3); display: grid; place-items: center;
+  font-size: 10px; font-weight: 800; color: var(--text-2); flex-shrink: 0; }
+.rank-row:nth-child(1) .rank-num { background: var(--green-100); color: var(--green-600); }
+.rank-info { flex: 1; min-width: 0; }
+.rank-info strong { font-size: 12px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.progress-track { height: 5px; border-radius: 5px; background: var(--surface-3); margin-top: 5px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 5px; background: var(--primary); transition: width .5s ease; }
+.rank-value { font-size: 11.5px; font-weight: 700; color: var(--text-2); white-space: nowrap; }

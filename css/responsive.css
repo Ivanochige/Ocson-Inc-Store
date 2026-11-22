@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Ocson Inc. Store — Responsive breakpoints
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .kpi-grid, .kpi-grid.secondary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .topbar-search { width: 200px; }
+}
+@media (max-width: 1100px) {
+  .chart-grid.three, .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pos-layout { grid-template-columns: minmax(0, 1fr) 320px; }
+  .topbar-search { display: none; }
+}
+@media (max-width: 992px) {
+  :root { --sidebar-width: 250px; }
+  .sidebar { transform: translateX(-100%); transition: transform .25s ease; box-shadow: var(--shadow-lg); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-close { display: grid; }
+  .sidebar-overlay.show { display: block; }
+  .main-column { margin-left: 0; }
+  .menu-toggle { display: grid; }
+  .content { padding: 20px; }
+  .topbar { padding: 0 18px; }
+  .kpi-grid, .kpi-grid.secondary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .highlight-strip { grid-template-columns: 1fr; }
+  .chart-grid, .grid-2 { grid-template-columns: 1fr; }
+  .chart-wide { grid-column: span 1; }
+  .pos-layout { grid-template-columns: 1fr; }
+  .cart-panel { position: static; }
+}
+@media (max-width: 700px) {
+  .content { padding: 16px 13px 40px; }
+  .topbar { height: 64px; padding: 0 12px; gap: 10px; }
+  .topbar-title h1 { font-size: 15px; }
+  .topbar-title p { display: none; }
+  .user-meta, .chev { display: none; }
+  .user-chip { padding: 4px; border: 0; }
+  .topbar-actions { gap: 5px; }
+  .kpi-grid, .kpi-grid.secondary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .stat-card { padding: 13px; }
+  .stat-value { font-size: 20px; }
+  .stat-icon { width: 34px; height: 34px; }
+  .stat-icon svg { width: 17px; height: 17px; }
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 0; }
+  .dashboard-filters { padding: 10px; }
+  .dashboard-filters .date-range { margin-left: 0; width: 100%; }
+  .date-range input { flex: 1; width: 50%; }
+  .period-tabs { width: 100%; overflow-x: auto; }
+  .period-tab { flex: 1; padding: 6px 8px; font-size: 10.5px; white-space: nowrap; }
+  .filter-bar .form-control, .filter-bar .form-select, .filter-bar .search-input { width: 100%; max-width: none; min-width: 0; flex: 1 1 100%; }
+  .modal-backdrop { padding: 10px; align-items: flex-start; }
+  .modal { max-height: calc(100vh - 20px); border-radius: 14px; }
+  .modal-body { padding: 16px; }
+  .modal-header, .modal-footer { padding: 14px 16px; }
+  .modal-footer .btn { flex: 1; }
+  .pos-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .pos-product img { height: 70px; }
+  .pay-methods { grid-template-columns: repeat(3, 1fr); }
+  .kv-grid { grid-template-columns: 1fr; }
+  .page-heading { align-items: flex-start; }
+  .table-footer { flex-direction: column; gap: 10px; }
+  #toast-root { left: 12px; right: 12px; bottom: 12px; align-items: stretch; }
+  .toast { min-width: 0; max-width: none; }
+  .chart-box { height: 220px; }
+}
+@media (max-width: 420px) {
+  .kpi-grid, .kpi-grid.secondary { grid-template-columns: 1fr; }
+  .pos-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat-value { font-size: 22px; }
+  .action-group { flex-wrap: wrap; }
+}
+@media print {
+  .sidebar, .topbar, .dashboard-filters, .filter-bar, .page-heading .btn, .no-print { display: none !important; }
+  .main-column { margin: 0; }
+  .content { padding: 0; }
+  .card { box-shadow: none; border-color: #ddd; break-inside: avoid; }
+  body { background: #fff; }
+}
