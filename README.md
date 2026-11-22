@@ -205,8 +205,8 @@ Request shape:
 
 | Symptom | Fix |
 |---|---|
-| “Backend API is not configured” | Settings → Backend API → paste the `/exec` URL. |
-| “Cannot reach the backend” | Check the URL, your internet connection, and that the deployment is set to **Anyone**. |
+| “Backend API is not configured” | Use the first-run **Connect your backend** dialog, or sign in and go to Settings → Backend API → paste the `/exec` URL. |
+| “Cannot reach the backend” | Use the **Test connection** button in the setup dialog. Confirm the URL ends in `/exec` (not `/dev`), the deployment is set to **Anyone**, and your internet connection is working. |
 | “Invalid response from backend” | Redeploy with a **New version** after code changes. |
 | `AUTH_REQUIRED` loop | Sign out, clear site data for the domain, sign in again. |
 | `DUPLICATE_REQUEST` | Refresh the page; the original operation already succeeded. |
